@@ -53,8 +53,3 @@ export interface SortModalProps {
   onSortOption: (option: string) => void;
   onClose: () => void;
 }
-
-export type SortModalScreenProps = {
-  route: RouteProp<RootStackParamList, "SortModal">;
-  navigation: StackNavigationProp<RootStackParamList, "SortModal">;
-};

@@ -1,33 +1,24 @@
 import { View, TouchableOpacity } from "react-native";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
+import { useState } from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ParamListBase } from "@react-navigation/native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { RootStackParamList } from "./types";
+import SortModal from "./Screens/SortModal";
 
 interface CustomHeaderProps<T extends ParamListBase> {
   navigation: StackNavigationProp<RootStackParamList>;
-  showReset?: boolean;
-  onSortPress: () => void;
+  onSortPress: () => void; // Оновлено для виклику функції, що відкриває модалку
 }
 
 const CustomHeader = ({ navigation, onSortPress }: CustomHeaderProps<any>) => {
   const { styles, theme } = useStyles(stylesheet);
 
-  const handleSortPress = () => {
-    navigation.navigate("SortModal", {
-      isVisible: true,
-      onSortOption: onSortPress,
-      onClose: () => {
-        // Додайте логіку для закриття модального вікна
-      },
-    });
-  };
-
   return (
     <View style={styles.headerContainer}>
       <TouchableOpacity
-        onPress={handleSortPress}
+        onPress={onSortPress} // Викликаємо функцію на натискання
         style={styles.iconContainerLeft}
       >
         <AntDesign name="menuunfold" size={24} />

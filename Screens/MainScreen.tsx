@@ -3,14 +3,9 @@ import { View, Text, FlatList } from "react-native";
 import { observer } from "mobx-react-lite";
 import SubscriptionStore from "../Store/SubscriptionStore";
 import SubscriptionItem from "../components/SubscriptionItem";
-import CustomHeader from "../CustomHeader";
-import SortModal from "./SortModal";
 import { MainScreenProps } from "../types";
 
 const MainScreen: React.FC<MainScreenProps> = observer(({ navigation }) => {
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [sortOption, setSortOption] = useState<string>("");
-
   // Функція для відображення плейсхолдера, якщо немає підписок
   const renderPlaceholder = () => (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -20,29 +15,14 @@ const MainScreen: React.FC<MainScreenProps> = observer(({ navigation }) => {
     </View>
   );
 
-  // Функція для відкриття меню сортування
-  const handleSortPress = () => {
-    navigation.navigate("SortModal", {
-      isVisible: true,
-      onSortOption: handleSortOption,
-      onClose: () => setModalVisible(false),
-    });
-  };
-
-  // Обробка вибору сортування
-  const handleSortOption = (option: string) => {
-    setSortOption(option);
-    setModalVisible(false); // Закриваємо модальне вікно після вибору
-  };
-
   // Функція сортування підписок
-  const sortSubscriptions = (subscriptions: any[]) => {
+  const sortSubscriptions = (subscriptions: any[], sortOption: string) => {
     switch (sortOption) {
       case "date":
         return subscriptions.sort((a, b) => {
-          const dateA = new Date(a.date); // Перетворюємо в Date
-          const dateB = new Date(b.date); // Перетворюємо в Date
-          return dateB.getTime() - dateA.getTime(); // Порівнюємо дати
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          return dateB.getTime() - dateA.getTime();
         });
       case "alphabet":
         return subscriptions.sort((a, b) => a.name.localeCompare(b.name));
@@ -55,13 +35,14 @@ const MainScreen: React.FC<MainScreenProps> = observer(({ navigation }) => {
 
   return (
     <View style={{ flex: 1, padding: 20 }}>
-      {/* <CustomHeader navigation={navigation} onSortPress={handleSortPress} /> */}
-
       {SubscriptionStore.subscriptions.length === 0 ? (
         renderPlaceholder()
       ) : (
         <FlatList
-          data={sortSubscriptions([...SubscriptionStore.subscriptions])} // Викликаємо сортування перед відображенням
+          data={sortSubscriptions(
+            [...SubscriptionStore.subscriptions],
+            "date" // за замовчуванням можна встановити сортування
+          )}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <SubscriptionItem
@@ -73,16 +54,8 @@ const MainScreen: React.FC<MainScreenProps> = observer(({ navigation }) => {
               }
             />
           )}
-          extraData={SubscriptionStore.subscriptions.length}
         />
       )}
-
-      {/* Модальне вікно для сортування */}
-      <SortModal
-        isVisible={isModalVisible}
-        onSortOption={handleSortOption}
-        onClose={() => setModalVisible(false)} // Закриває модальне вікно
-      />
     </View>
   );
 });

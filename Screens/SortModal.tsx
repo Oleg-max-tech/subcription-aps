@@ -1,7 +1,6 @@
 import React from "react";
 import { Modal, View, Text, TouchableOpacity } from "react-native";
 import { SortModalProps } from "../types";
-import { SortModalScreenProps } from "../types";
 
 const SortModal: React.FC<SortModalProps> = ({
   isVisible,
