@@ -16,6 +16,7 @@ interface SubscriptionItemProps {
     title: string;
     amount: number;
     nextPaymentDate: string;
+    currency: string; // додано поле для валюти
   };
   onEdit: () => void;
 }
@@ -71,7 +72,8 @@ const SubscriptionItem: React.FC<SubscriptionItemProps> = ({
             {subscription.title}
           </Text>
           <Text style={{ fontSize: 14, color: "#666", marginTop: 4 }}>
-            {subscription.amount} $ • {subscription.nextPaymentDate}
+            {subscription.amount} {subscription.currency} •{" "}
+            {subscription.nextPaymentDate}
           </Text>
         </View>
       </View>

@@ -15,6 +15,7 @@ export type MainScreenNavigationProp = StackNavigationProp<
 
 export interface MainScreenProps {
   navigation: MainScreenNavigationProp;
+  sortOption: string;
 }
 
 export type AddSubscriptionScreenNavigationProp = StackNavigationProp<
@@ -46,6 +47,8 @@ export interface SubscriptionProps {
   amount: number;
   category: string;
   nextPaymentDate: string;
+  paymentCycle: "month" | "year" | "day";
+  currency: string;
 }
 
 export interface SortModalProps {

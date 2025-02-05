@@ -3,8 +3,8 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import MainScreen from "./Screens/MainScreen";
-import AddSubscriptionScreen from "./Screens/AddSubscriptionScreen";
-import EditSubscriptionScreen from "./Screens/EditSubscriptionScreen";
+import AddSubscriptionScreen from "./Screens/AddSubscriptionScreen/AddSubscriptionScreen";
+import EditSubscriptionScreen from "./Screens/EditSubscription/EditSubscriptionScreen";
 import { RootStackParamList } from "./types";
 import CustomHeader from "./CustomHeader";
 import { useState } from "react";
@@ -14,7 +14,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
   const [isModalVisible, setModalVisible] = useState(false); // Додаємо стан для відображення модалки
-  const [sortOption, setSortOption] = useState<string>("");
+  const [sortOption, setSortOption] = useState<string>("date"); // Початкове значення сортування
 
   const onSortPress = () => {
     setModalVisible(true); // Відкриваємо модальне вікно сортування
@@ -30,7 +30,6 @@ export default function App() {
       <Stack.Navigator initialRouteName="MainScreen">
         <Stack.Screen
           name="MainScreen"
-          component={MainScreen}
           options={({ navigation }) => ({
             headerTitle: "",
             headerStyle: {
@@ -43,7 +42,14 @@ export default function App() {
               />
             ),
           })}
-        />
+        >
+          {(props) => (
+            <MainScreen
+              {...props}
+              sortOption={sortOption} // Передаємо сортування як пропс
+            />
+          )}
+        </Stack.Screen>
         <Stack.Screen
           name="AddSubscriptionScreen"
           component={AddSubscriptionScreen}
@@ -78,12 +84,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

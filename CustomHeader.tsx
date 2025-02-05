@@ -1,11 +1,9 @@
 import { View, TouchableOpacity } from "react-native";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
-import { useState } from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ParamListBase } from "@react-navigation/native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { RootStackParamList } from "./types";
-import SortModal from "./Screens/SortModal";
 
 interface CustomHeaderProps<T extends ParamListBase> {
   navigation: StackNavigationProp<RootStackParamList>;
