@@ -4,12 +4,30 @@ import { SortModalProps } from "../types";
 import { createStyleSheet } from "react-native-unistyles";
 import { useStyles } from "react-native-unistyles";
 
+export const sortSubscriptions = (subscriptions: any[], sortOption: string) => {
+  switch (sortOption) {
+    case "date":
+      return subscriptions.sort((a, b) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateB.getTime() - dateA.getTime();
+      });
+    case "alphabet":
+      return subscriptions.sort((a, b) => a.name.localeCompare(b.name));
+    case "amount":
+      return subscriptions.sort((a, b) => b.amount - a.amount);
+    default:
+      return subscriptions;
+  }
+};
+
 const SortModal: React.FC<SortModalProps> = ({
   isVisible,
   onSortOption,
   onClose,
 }) => {
   const { styles, theme } = useStyles(stylesheet);
+
   return (
     <Modal
       visible={isVisible}

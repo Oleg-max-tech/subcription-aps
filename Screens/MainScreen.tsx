@@ -11,7 +11,7 @@ import SubscriptionStore from "../Store/SubscriptionStore";
 import SubscriptionItem from "../components/SubscriptionItem";
 import { MainScreenProps } from "../types";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-
+import { sortSubscriptions } from "./SortModal";
 const MainScreen: React.FC<MainScreenProps> = observer(
   ({ navigation, sortOption }) => {
     const { styles, theme } = useStyles(stylesheet);
@@ -21,23 +21,6 @@ const MainScreen: React.FC<MainScreenProps> = observer(
         <Text style={styles.placeholderText}>У вас поки що немає підписок</Text>
       </View>
     );
-
-    const sortSubscriptions = (subscriptions: any[], sortOption: string) => {
-      switch (sortOption) {
-        case "date":
-          return subscriptions.sort((a, b) => {
-            const dateA = new Date(a.date);
-            const dateB = new Date(b.date);
-            return dateB.getTime() - dateA.getTime();
-          });
-        case "alphabet":
-          return subscriptions.sort((a, b) => a.name.localeCompare(b.name));
-        case "amount":
-          return subscriptions.sort((a, b) => b.amount - a.amount);
-        default:
-          return subscriptions;
-      }
-    };
 
     return (
       <View style={styles.container}>
