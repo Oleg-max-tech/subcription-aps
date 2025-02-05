@@ -20,6 +20,7 @@ export default function App() {
         <Stack.Screen
           name="AddSubscriptionScreen"
           component={AddSubscriptionScreen}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="EditSubscriptionScreen"

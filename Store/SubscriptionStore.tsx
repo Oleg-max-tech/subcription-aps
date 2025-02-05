@@ -5,7 +5,7 @@ import { SubscriptionProps } from "../types";
 
 class SubscriptionStore {
   subscriptions: SubscriptionProps[] = [];
-  hydrated = false; // Перевірка, чи завантажені дані
+  hydrated = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -51,14 +51,6 @@ class SubscriptionStore {
 
   get totalExpense() {
     return this.subscriptions.reduce((total, sub) => total + sub.amount, 0);
-  }
-
-  async hydrateStore() {
-    await makePersistable(this, {
-      name: "SubscriptionStore",
-      properties: ["subscriptions"],
-      storage: AsyncStorage,
-    });
   }
 }
 
