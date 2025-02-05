@@ -5,6 +5,7 @@ export type RootStackParamList = {
   MainScreen: undefined;
   AddSubscriptionScreen: undefined;
   EditSubscriptionScreen: { subscriptionId: string };
+  SortModal: SortModalProps;
 };
 
 export type MainScreenNavigationProp = StackNavigationProp<
@@ -46,3 +47,14 @@ export interface SubscriptionProps {
   category: string;
   nextPaymentDate: string;
 }
+
+export interface SortModalProps {
+  isVisible: boolean;
+  onSortOption: (option: string) => void;
+  onClose: () => void;
+}
+
+export type SortModalScreenProps = {
+  route: RouteProp<RootStackParamList, "SortModal">;
+  navigation: StackNavigationProp<RootStackParamList, "SortModal">;
+};

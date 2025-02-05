@@ -14,14 +14,25 @@ interface CustomHeaderProps<T extends ParamListBase> {
 const CustomHeader = ({ navigation, onSortPress }: CustomHeaderProps<any>) => {
   const { styles, theme } = useStyles(stylesheet);
 
+  const handleSortPress = () => {
+    navigation.navigate("SortModal", {
+      isVisible: true,
+      onSortOption: onSortPress,
+      onClose: () => {
+        // Додайте логіку для закриття модального вікна
+      },
+    });
+  };
+
   return (
     <View style={styles.headerContainer}>
-      {/* Кнопка сортування зліва */}
-      <TouchableOpacity onPress={onSortPress} style={styles.iconContainerLeft}>
+      <TouchableOpacity
+        onPress={handleSortPress}
+        style={styles.iconContainerLeft}
+      >
         <AntDesign name="menuunfold" size={24} />
       </TouchableOpacity>
 
-      {/* Кнопка додавання справа */}
       <TouchableOpacity
         onPress={() => navigation.navigate("AddSubscriptionScreen")}
         style={styles.iconContainerRight}
@@ -37,9 +48,9 @@ export default CustomHeader;
 const stylesheet = createStyleSheet((theme) => ({
   headerContainer: {
     flexDirection: "row",
-    justifyContent: "space-between", // Це дозволить кнопкам бути зліва і справа
+    justifyContent: "space-between",
     alignItems: "center",
-    width: "225%", // Забезпечує, щоб контейнер займав весь доступний простір
+    width: "225%",
     paddingHorizontal: 15,
   },
   iconContainerLeft: {

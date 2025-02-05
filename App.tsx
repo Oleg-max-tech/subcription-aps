@@ -7,12 +7,13 @@ import AddSubscriptionScreen from "./Screens/AddSubscriptionScreen";
 import EditSubscriptionScreen from "./Screens/EditSubscriptionScreen";
 import { RootStackParamList } from "./types";
 import CustomHeader from "./CustomHeader"; // Потрібно додати CustomHeader компонент
+import SortModal from "./Screens/SortModal";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
-  const onSortPress = () => {
-    console.log("Sort button pressed");
+  const onSortPress = (navigation: any) => {
+    navigation.navigate("SortModal");
   };
 
   return (
@@ -29,7 +30,7 @@ export default function App() {
             headerLeft: () => (
               <CustomHeader
                 navigation={navigation}
-                onSortPress={onSortPress} // Передаємо onSortPress
+                onSortPress={() => onSortPress(navigation)} // Передаємо onSortPress
               />
             ),
           })}
@@ -59,10 +60,22 @@ export default function App() {
             headerRight: () => (
               <CustomHeader
                 navigation={navigation}
-                onSortPress={onSortPress} // Передаємо onSortPress
+                onSortPress={() => onSortPress(navigation)} // Передаємо onSortPress
               />
             ),
           })}
+        />
+        <Stack.Screen
+          name="SortModal"
+          component={SortModal}
+          options={{
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#fff",
+            },
+            headerRight: undefined,
+            presentation: "transparentModal", // Можна використовувати стиль modal для показу
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
