@@ -9,6 +9,7 @@ import {
   Fontisto,
   Entypo,
 } from "@expo/vector-icons";
+import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 interface SubscriptionItemProps {
   subscription: {
@@ -52,37 +53,61 @@ const SubscriptionItem: React.FC<SubscriptionItemProps> = ({
   const icon = companyIcons[subscription.title.toLowerCase()] || (
     <Feather name="credit-card" size={24} color="#888" />
   );
+  const { styles, theme } = useStyles(stylesheet);
 
   return (
-    <View
-      style={{
-        paddingVertical: 12,
-        paddingHorizontal: 16,
-        borderBottomWidth: 1,
-        borderColor: "#ddd",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-      }}
-    >
-      <View style={{ flexDirection: "row", alignItems: "center", flex: 1 }}>
+    <View style={styles.container}>
+      <View style={styles.content}>
         {icon}
-        <View style={{ marginLeft: 10 }}>
-          <Text style={{ fontSize: 16, fontWeight: "600" }}>
-            {subscription.title}
-          </Text>
-          <Text style={{ fontSize: 14, color: "#666", marginTop: 4 }}>
+        <View style={styles.textContainer}>
+          <Text style={styles.title}>{subscription.title}</Text>
+          <Text style={styles.details}>
             {subscription.amount} {subscription.currency} •{" "}
             {subscription.nextPaymentDate}
           </Text>
         </View>
       </View>
 
-      <TouchableOpacity onPress={onEdit} style={{ padding: 8 }}>
+      <TouchableOpacity onPress={onEdit} style={styles.editButton}>
         <Feather name="edit-2" size={20} color="#007AFF" />
       </TouchableOpacity>
     </View>
   );
 };
+
+const stylesheet = createStyleSheet((theme) => {
+  return {
+    container: {
+      paddingVertical: 12,
+      paddingHorizontal: 16,
+      borderBottomWidth: 1,
+      borderColor: "#ddd",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+    },
+    content: {
+      flexDirection: "row",
+      alignItems: "center",
+      flex: 1,
+    },
+    textContainer: {
+      marginLeft: 10,
+    },
+    title: {
+      fontSize: 16,
+      fontWeight: "600",
+      color: "#333",
+    },
+    details: {
+      fontSize: 14,
+      color: "#666",
+      marginTop: 4,
+    },
+    editButton: {
+      padding: 8,
+    },
+  };
+});
 
 export default SubscriptionItem;

@@ -71,6 +71,7 @@ export default function App() {
               backgroundColor: "#fff",
             },
             headerRight: undefined,
+            presentation: "modal",
           }}
         />
       </Stack.Navigator>
