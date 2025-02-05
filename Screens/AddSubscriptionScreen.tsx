@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button, Alert } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  Alert,
+  TouchableWithoutFeedback,
+  Keyboard,
+  ScrollView,
+} from "react-native";
 import { AddSubscriptionScreenProps } from "../types";
 import { SubscriptionProps } from "../types";
 import SubscriptionStore from "../Store/SubscriptionStore";
@@ -32,35 +41,37 @@ const AddSubscriptionScreen: React.FC<AddSubscriptionScreenProps> = ({
   };
 
   return (
-    <View style={{ flex: 1, padding: 20 }}>
-      <Text style={{ fontSize: 18, marginBottom: 10 }}>Нова підписка</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Введіть назву підписки"
-        value={title}
-        onChangeText={setTitle}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Вартість"
-        keyboardType="numeric"
-        value={amount}
-        onChangeText={setAmount}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Категорія"
-        value={category}
-        onChangeText={setCategory}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Дата наступної оплати (YYYY-MM-DD)"
-        value={nextPaymentDate}
-        onChangeText={setNextPaymentDate}
-      />
-      <Button title="Додати" onPress={handleAdd} />
-    </View>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <ScrollView contentContainerStyle={{ flex: 1, padding: 20 }}>
+        <Text style={{ fontSize: 18, marginBottom: 10 }}>Нова підписка</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Введіть назву підписки"
+          value={title}
+          onChangeText={setTitle}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Вартість"
+          keyboardType="numeric"
+          value={amount}
+          onChangeText={setAmount}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Категорія"
+          value={category}
+          onChangeText={setCategory}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Дата наступної оплати (YYYY-MM-DD)"
+          value={nextPaymentDate}
+          onChangeText={setNextPaymentDate}
+        />
+        <Button title="Додати" onPress={handleAdd} />
+      </ScrollView>
+    </TouchableWithoutFeedback>
   );
 };
 

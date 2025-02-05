@@ -7,6 +7,7 @@ import { RootStackParamList } from "./types";
 
 interface CustomHeaderProps<T extends ParamListBase> {
   navigation: StackNavigationProp<RootStackParamList>;
+  showReset?: boolean;
   onSortPress: () => void;
 }
 
@@ -15,15 +16,17 @@ const CustomHeader = ({ navigation, onSortPress }: CustomHeaderProps<any>) => {
 
   return (
     <View style={styles.headerContainer}>
-      <TouchableOpacity onPress={onSortPress} style={styles.iconContainer}>
-        <AntDesign name="menuunfold" size={24} color={theme.header.text} />
+      {/* Кнопка сортування зліва */}
+      <TouchableOpacity onPress={onSortPress} style={styles.iconContainerLeft}>
+        <AntDesign name="menuunfold" size={24} />
       </TouchableOpacity>
 
+      {/* Кнопка додавання справа */}
       <TouchableOpacity
         onPress={() => navigation.navigate("AddSubscriptionScreen")}
-        style={styles.iconContainer}
+        style={styles.iconContainerRight}
       >
-        <Ionicons name="add" size={24} color={theme.header.text} />
+        <Ionicons name="add" size={24} />
       </TouchableOpacity>
     </View>
   );
@@ -34,11 +37,16 @@ export default CustomHeader;
 const stylesheet = createStyleSheet((theme) => ({
   headerContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-between", // Це дозволить кнопкам бути зліва і справа
     alignItems: "center",
+    width: "225%", // Забезпечує, щоб контейнер займав весь доступний простір
     paddingHorizontal: 15,
   },
-  iconContainer: {
+  iconContainerLeft: {
+    padding: 8,
+    borderRadius: 8,
+  },
+  iconContainerRight: {
     padding: 8,
     borderRadius: 8,
   },
