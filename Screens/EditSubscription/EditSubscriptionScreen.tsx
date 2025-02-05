@@ -89,7 +89,6 @@ const EditSubscriptionScreen: React.FC<EditSubscriptionScreenProps> = observer(
     return (
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <ScrollView contentContainerStyle={styles.container}>
-          <Text style={styles.title}>Редагування підписки</Text>
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.input}

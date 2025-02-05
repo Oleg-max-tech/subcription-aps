@@ -58,7 +58,6 @@ const AddSubscriptionScreen: React.FC<AddSubscriptionScreenProps> = ({
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.title}>Нова підписка</Text>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}

@@ -12,6 +12,7 @@ import SubscriptionItem from "../components/SubscriptionItem";
 import { MainScreenProps } from "../types";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 import { sortSubscriptions } from "./SortModal";
+
 const MainScreen: React.FC<MainScreenProps> = observer(
   ({ navigation, sortOption }) => {
     const { styles, theme } = useStyles(stylesheet);
@@ -35,13 +36,13 @@ const MainScreen: React.FC<MainScreenProps> = observer(
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <TouchableOpacity
-                style={styles.cardContainer} // Стиль для контейнера
+                style={styles.cardContainer}
                 onPress={() =>
                   navigation.navigate("EditSubscriptionScreen", {
                     subscriptionId: item.id,
                   })
                 }
-                activeOpacity={0.7} // Ефект натискання
+                activeOpacity={0.7}
               >
                 <SubscriptionItem
                   subscription={item}
