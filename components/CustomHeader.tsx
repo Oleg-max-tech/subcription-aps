@@ -3,11 +3,11 @@ import { Ionicons, AntDesign } from "@expo/vector-icons";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ParamListBase } from "@react-navigation/native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { RootStackParamList } from "./types";
+import { RootStackParamList } from "../types";
 
 interface CustomHeaderProps<T extends ParamListBase> {
   navigation: StackNavigationProp<RootStackParamList>;
-  onSortPress: () => void; // Оновлено для виклику функції, що відкриває модалку
+  onSortPress: () => void;
 }
 
 const CustomHeader = ({ navigation, onSortPress }: CustomHeaderProps<any>) => {
@@ -15,10 +15,7 @@ const CustomHeader = ({ navigation, onSortPress }: CustomHeaderProps<any>) => {
 
   return (
     <View style={styles.headerContainer}>
-      <TouchableOpacity
-        onPress={onSortPress} // Викликаємо функцію на натискання
-        style={styles.iconContainerLeft}
-      >
+      <TouchableOpacity onPress={onSortPress} style={styles.iconContainerLeft}>
         <AntDesign name="menuunfold" size={24} />
       </TouchableOpacity>
 

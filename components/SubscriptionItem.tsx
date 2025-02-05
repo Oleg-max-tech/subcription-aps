@@ -17,12 +17,11 @@ interface SubscriptionItemProps {
     title: string;
     amount: number;
     nextPaymentDate: string;
-    currency: string; // додано поле для валюти
+    currency: string;
   };
   onEdit: () => void;
 }
 
-// Об'єкт відповідності назв компаній і їхніх іконок
 const companyIcons: { [key: string]: JSX.Element } = {
   youtube: <FontAwesome name="youtube-play" size={24} color="red" />,
   netflix: <MaterialCommunityIcons name="netflix" size={24} color="red" />,
@@ -80,7 +79,6 @@ const stylesheet = createStyleSheet((theme) => {
     container: {
       paddingVertical: 12,
       paddingHorizontal: 16,
-      borderBottomWidth: 1,
       borderColor: "#ddd",
       flexDirection: "row",
       alignItems: "center",

@@ -6,23 +6,23 @@ import MainScreen from "./Screens/MainScreen";
 import AddSubscriptionScreen from "./Screens/AddSubscriptionScreen/AddSubscriptionScreen";
 import EditSubscriptionScreen from "./Screens/EditSubscription/EditSubscriptionScreen";
 import { RootStackParamList } from "./types";
-import CustomHeader from "./CustomHeader";
+import CustomHeader from "./components/CustomHeader";
 import { useState } from "react";
-import SortModal from "./Screens/SortModal"; // Імпортуємо SortModal
+import SortModal from "./Screens/SortModal";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
-  const [isModalVisible, setModalVisible] = useState(false); // Додаємо стан для відображення модалки
-  const [sortOption, setSortOption] = useState<string>("date"); // Початкове значення сортування
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [sortOption, setSortOption] = useState<string>("date");
 
   const onSortPress = () => {
-    setModalVisible(true); // Відкриваємо модальне вікно сортування
+    setModalVisible(true);
   };
 
   const handleSortOption = (option: string) => {
     setSortOption(option);
-    setModalVisible(false); // Закриваємо модальне вікно після вибору
+    setModalVisible(false);
   };
 
   return (
@@ -36,19 +36,11 @@ export default function App() {
               backgroundColor: "#fff",
             },
             headerLeft: () => (
-              <CustomHeader
-                navigation={navigation}
-                onSortPress={onSortPress} // Передаємо функцію на натискання сортування
-              />
+              <CustomHeader navigation={navigation} onSortPress={onSortPress} />
             ),
           })}
         >
-          {(props) => (
-            <MainScreen
-              {...props}
-              sortOption={sortOption} // Передаємо сортування як пропс
-            />
-          )}
+          {(props) => <MainScreen {...props} sortOption={sortOption} />}
         </Stack.Screen>
         <Stack.Screen
           name="AddSubscriptionScreen"
@@ -76,11 +68,10 @@ export default function App() {
         />
       </Stack.Navigator>
 
-      {/* Модальне вікно для сортування */}
       <SortModal
         isVisible={isModalVisible}
         onSortOption={handleSortOption}
-        onClose={() => setModalVisible(false)} // Закриваємо модальне вікно
+        onClose={() => setModalVisible(false)}
       />
     </NavigationContainer>
   );

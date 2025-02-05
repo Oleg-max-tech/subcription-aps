@@ -14,8 +14,8 @@ import SubscriptionStore from "../../Store/SubscriptionStore";
 import { observer } from "mobx-react-lite";
 import { useStyles } from "react-native-unistyles";
 import { createStyleSheet } from "react-native-unistyles";
-import PaymentCycleModal from "../AddSubscriptionScreen/ PaymentCycleModal"; // Імпортуємо модальне вікно циклу оплати
-import CurrencyModal from "../AddSubscriptionScreen/CurrencyModal"; // Імпортуємо модальне вікно валюти
+import PaymentCycleModal from "../AddSubscriptionScreen/ PaymentCycleModal";
+import CurrencyModal from "../AddSubscriptionScreen/CurrencyModal";
 
 const EditSubscriptionScreen: React.FC<EditSubscriptionScreenProps> = observer(
   ({ route, navigation }) => {
@@ -60,7 +60,7 @@ const EditSubscriptionScreen: React.FC<EditSubscriptionScreenProps> = observer(
       const updatedSubscription = {
         id: subscriptionId,
         title,
-        name: title, // Додано 'name' як у функції додавання
+        name: title,
         amount: parseFloat(amount),
         category,
         nextPaymentDate,
@@ -124,7 +124,6 @@ const EditSubscriptionScreen: React.FC<EditSubscriptionScreenProps> = observer(
             />
           </View>
 
-          {/* Payment Cycle */}
           <View style={styles.inputContainer}>
             <Text style={styles.label}>Цикл оплати</Text>
             <TouchableWithoutFeedback
@@ -140,7 +139,6 @@ const EditSubscriptionScreen: React.FC<EditSubscriptionScreenProps> = observer(
             </TouchableWithoutFeedback>
           </View>
 
-          {/* Currency */}
           <View style={styles.inputContainer}>
             <Text style={styles.label}>Валюта</Text>
             <TouchableWithoutFeedback
@@ -152,7 +150,6 @@ const EditSubscriptionScreen: React.FC<EditSubscriptionScreenProps> = observer(
 
           <Button title="Зберегти" onPress={handleEdit} />
 
-          {/* Modals */}
           <PaymentCycleModal
             visible={isPaymentCycleModalVisible}
             onClose={() => setIsPaymentCycleModalVisible(false)}

@@ -13,8 +13,8 @@ import { AddSubscriptionScreenProps } from "../../types";
 import SubscriptionStore from "../../Store/SubscriptionStore";
 import { useStyles } from "react-native-unistyles";
 import { createStyleSheet } from "react-native-unistyles";
-import PaymentCycleModal from "./ PaymentCycleModal"; // Імпортуємо модальне вікно циклу оплати
-import CurrencyModal from "./CurrencyModal"; // Імпортуємо модальне вікно валюти
+import PaymentCycleModal from "./ PaymentCycleModal";
+import CurrencyModal from "./CurrencyModal";
 
 const AddSubscriptionScreen: React.FC<AddSubscriptionScreenProps> = ({
   navigation,
@@ -93,7 +93,6 @@ const AddSubscriptionScreen: React.FC<AddSubscriptionScreenProps> = ({
           />
         </View>
 
-        {/* Payment Cycle */}
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Цикл оплати</Text>
           <TouchableWithoutFeedback
@@ -109,7 +108,6 @@ const AddSubscriptionScreen: React.FC<AddSubscriptionScreenProps> = ({
           </TouchableWithoutFeedback>
         </View>
 
-        {/* Currency */}
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Валюта</Text>
           <TouchableWithoutFeedback
@@ -121,7 +119,6 @@ const AddSubscriptionScreen: React.FC<AddSubscriptionScreenProps> = ({
 
         <Button title="Додати" onPress={handleAdd} />
 
-        {/* Modals */}
         <PaymentCycleModal
           visible={isPaymentCycleModalVisible}
           onClose={() => setIsPaymentCycleModalVisible(false)}
