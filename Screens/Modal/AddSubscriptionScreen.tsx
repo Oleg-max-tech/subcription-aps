@@ -13,7 +13,7 @@ import { AddSubscriptionScreenProps } from "../../types";
 import SubscriptionStore from "../../Store/SubscriptionStore";
 import { useStyles } from "react-native-unistyles";
 import { createStyleSheet } from "react-native-unistyles";
-import PaymentCycleModal from "./ PaymentCycleModal";
+import PaymentCycleModal from "../AddSubscriptionScreen/ PaymentCycleModal";
 import CurrencyModal from "./CurrencyModal";
 
 const AddSubscriptionScreen: React.FC<AddSubscriptionScreenProps> = ({

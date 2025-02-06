@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import MainScreen from "./Screens/MainScreen";
-import AddSubscriptionScreen from "./Screens/AddSubscriptionScreen/AddSubscriptionScreen";
+import AddSubscriptionScreen from "./Screens/Modal/AddSubscriptionScreen";
 import EditSubscriptionScreen from "./Screens/EditSubscription/EditSubscriptionScreen";
 import { RootStackParamList } from "./types";
 import CustomHeader from "./components/CustomHeader";

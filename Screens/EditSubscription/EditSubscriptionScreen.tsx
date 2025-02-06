@@ -15,7 +15,7 @@ import { observer } from "mobx-react-lite";
 import { useStyles } from "react-native-unistyles";
 import { createStyleSheet } from "react-native-unistyles";
 import PaymentCycleModal from "../AddSubscriptionScreen/ PaymentCycleModal";
-import CurrencyModal from "../AddSubscriptionScreen/CurrencyModal";
+import CurrencyModal from "../Modal/CurrencyModal";
 
 const EditSubscriptionScreen: React.FC<EditSubscriptionScreenProps> = observer(
   ({ route, navigation }) => {
