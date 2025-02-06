@@ -12,7 +12,7 @@ import SortModal from "./Screens/Modal/SortModal";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-export default function App() {
+const App: React.FC = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [sortOption, setSortOption] = useState<string>("date");
 
@@ -75,4 +75,6 @@ export default function App() {
       />
     </NavigationContainer>
   );
-}
+};
+
+export default App;
