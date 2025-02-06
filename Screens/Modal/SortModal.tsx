@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { SortModalProps } from "../types";
+import { SortModalProps } from "../../types";
 import { createStyleSheet } from "react-native-unistyles";
 import { useStyles } from "react-native-unistyles";
 

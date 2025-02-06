@@ -8,7 +8,7 @@ import EditSubscriptionScreen from "./Screens/EditSubscription/EditSubscriptionS
 import { RootStackParamList } from "./types";
 import CustomHeader from "./components/CustomHeader";
 import { useState } from "react";
-import SortModal from "./Screens/SortModal";
+import SortModal from "./Screens/Modal/SortModal";
 
 const Stack = createStackNavigator<RootStackParamList>();
 

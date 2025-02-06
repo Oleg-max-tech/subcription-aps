@@ -11,7 +11,7 @@ import SubscriptionStore from "../Store/SubscriptionStore";
 import SubscriptionItem from "../components/SubscriptionItem";
 import { MainScreenProps } from "../types";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
-import { sortSubscriptions } from "./SortModal";
+import { sortSubscriptions } from "./Modal/SortModal";
 
 const MainScreen: React.FC<MainScreenProps> = observer(
   ({ navigation, sortOption }) => {
