@@ -20,4 +20,3 @@
    ```bash
    git clone https://github.com/Oleg-max-tech/subcription-aps.git
    ```
-   араовкн
