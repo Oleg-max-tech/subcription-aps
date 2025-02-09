@@ -26,7 +26,9 @@
     "react-native-safe-area-context": "^5.1.0",
     "react-native-screens": "^4.6.0",
     "react-native-unistyles": "^2.20.0",
-    "victory-native": "^41.16.0"
+    "victory-native": "^41.16.0",
+    "expo-notifications": "~0.29.13",
+    "expo-device": "~7.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

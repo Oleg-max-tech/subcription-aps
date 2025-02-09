@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Modal, View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { SortModalProps } from "../../types";
 import { createStyleSheet } from "react-native-unistyles";
@@ -27,6 +27,10 @@ const SortModal: React.FC<SortModalProps> = ({
   onClose,
 }) => {
   const { styles, theme } = useStyles(stylesheet);
+
+  useEffect(() => {
+    console.log("Модальне вікно відкрите!");
+  }, []);
 
   return (
     <Modal
@@ -89,4 +93,5 @@ const stylesheet = createStyleSheet((theme) => {
     },
   };
 });
+
 export default SortModal;
